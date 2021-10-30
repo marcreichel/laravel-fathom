@@ -2,24 +2,29 @@
 
 namespace MarcReichel\LaravelFathom\Tests;
 
+use Illuminate\Support\Facades\Http;
 use MarcReichel\LaravelFathom\LaravelFathomServiceProvider;
+use Orchestra\Testbench\TestCase as Orchestra;
 
-class TestCase extends \Orchestra\Testbench\TestCase
+class TestCase extends Orchestra
 {
     public function setUp(): void
     {
         parent::setUp();
-        // additional setup
+
+        Http::fake([
+            '*' => Http::response(),
+        ]);
     }
 
-    protected function getPackageProviders($app)
+    protected function getPackageProviders($app): array
     {
         return [
             LaravelFathomServiceProvider::class,
         ];
     }
 
-    protected function getEnvironmentSetUp($app)
+    protected function getEnvironmentSetUp($app): void
     {
         // perform environment setup
     }

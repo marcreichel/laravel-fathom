@@ -56,12 +56,13 @@ class Site extends Model
         return $this->resolveResponse($this->client->delete("sites/$id"));
     }
 
-    public function currentVisitors(bool $detailed)
+    public function currentVisitors(bool $detailed = false)
     {
-        return $this->resolveResponse($this->client->asForm()->get('current_visitors', [
+        $query = http_build_query(collect([
             'site_id' => $this->id,
-            'detailed' => $detailed,
-        ]));
+            'detailed' => $detailed ? 'true' : null,
+        ])->filter()->toArray());
+        return $this->resolveResponse($this->client->asForm()->get('current_visitors?' . $query));
     }
 
     public function events(): Event
