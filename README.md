@@ -4,6 +4,8 @@
 
 This is a Laravel wrapper for the [Fathom Analytics](https://usefathom.com/ref/SILMHC) API.
 
+[![Fathom Analytics](art/fathom-banner.png)](https://usefathom.com/ref/SILMHC)
+
 ## Installation
 
 *coming soon...*
