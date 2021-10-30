@@ -1,0 +1,37 @@
+{
+    "name": "marcreichel/laravel-fathom",
+    "description": "Fathom Analytics API wrapper for Laravel",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marc Reichel",
+            "email": "mail@marcreichel.de"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "MarcReichel\\LaravelFathom\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MarcReichel\\LaravelFathom\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "MarcReichel\\LaravelFathom\\LaravelFathomServiceProvider"
+            ]
+        }
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.0",
+        "phpunit/phpunit": "^9.5"
+    },
+    "require": {
+        "php": "^8.0",
+        "illuminate/support": "^8.68"
+    }
+}
