@@ -2,7 +2,7 @@
 
 # Laravel Fathom
 
-This is a Laravel wrapper for the [Fathom Analytics](https://usefathom.com) API.
+This is a Laravel wrapper for the [Fathom Analytics](https://usefathom.com/ref/SILMHC) API.
 
 ## Installation
 
