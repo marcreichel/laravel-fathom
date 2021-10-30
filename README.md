@@ -23,7 +23,7 @@ This is a Laravel wrapper for the [Fathom Analytics](https://usefathom.com/ref/S
 ```php
 use MarcReichel\LaravelFathom\Fathom;
 
-$account = Fathom::account();
+Fathom::account()->get();
 ```
 
 ### List Sites
@@ -31,7 +31,7 @@ $account = Fathom::account();
 ```php
 use MarcReichel\LaravelFathom\Fathom;
 
-$sites = Fathom::sites();
+Fathom::sites()->all();
 ```
 
 ### Get Site
@@ -39,7 +39,7 @@ $sites = Fathom::sites();
 ```php
 use MarcReichel\LaravelFathom\Fathom;
 
-$site = Fathom::site('CDBUGS');
+Fathom::site('CDBUGS')->get();
 ```
 
 ### Create Site
@@ -47,7 +47,7 @@ $site = Fathom::site('CDBUGS');
 ```php
 use MarcReichel\LaravelFathom\Fathom;
 
-$site = Fathom::createSite('Acme Inc');
+Fathom::sites()->create('Acme Inc');
 ```
 
 ### Update Site
@@ -55,7 +55,7 @@ $site = Fathom::createSite('Acme Inc');
 ```php
 use MarcReichel\LaravelFathom\Fathom;
 
-$site = Fathom::updateSite('CDBUGS', [
+Fathom::site('CDBUGS')->update([
     'name' => 'Acme Holdings Inc',
     'sharing' => 'private',
     'share_password' => 'the-jean-genie',
@@ -67,7 +67,7 @@ $site = Fathom::updateSite('CDBUGS', [
 ```php
 use MarcReichel\LaravelFathom\Fathom;
 
-$site = Fathom::wipeSite('CDBUGS');
+Fathom::site('CDBUGS')->wipe();
 ```
 
 ### Delete Site
@@ -75,7 +75,7 @@ $site = Fathom::wipeSite('CDBUGS');
 ```php
 use MarcReichel\LaravelFathom\Fathom;
 
-$site = Fathom::deleteSite('CDBUGS');
+Fathom::site('CDBUGS')->delete();
 ```
 
 ### List Events
@@ -83,7 +83,7 @@ $site = Fathom::deleteSite('CDBUGS');
 ```php
 use MarcReichel\LaravelFathom\Fathom;
 
-$site = Fathom::events('CDBUGS');
+Fathom::site('CDBUGS')->events()->all();
 ```
 
 ### Get Event
@@ -91,7 +91,9 @@ $site = Fathom::events('CDBUGS');
 ```php
 use MarcReichel\LaravelFathom\Fathom;
 
-$site = Fathom::event('CDBUGS', 'signed-up-to-newsletter');
+Fathom::site('CDBUGS')
+    ->event('signed-up-to-newsletter')
+    ->get();
 ```
 
 ### Create Event
@@ -99,7 +101,9 @@ $site = Fathom::event('CDBUGS', 'signed-up-to-newsletter');
 ```php
 use MarcReichel\LaravelFathom\Fathom;
 
-$site = Fathom::createEvent('CDBUGS', 'Purchase early access');
+Fathom::site('CDBUGS')
+    ->events()
+    ->create('Purchase early access');
 ```
 
 ### Update Event
@@ -107,11 +111,11 @@ $site = Fathom::createEvent('CDBUGS', 'Purchase early access');
 ```php
 use MarcReichel\LaravelFathom\Fathom;
 
-$site = Fathom::updateEvent(
-    'CDBUGS', // site id
-    'purchase-early-access', // event id
-    'Purchase Early Access (live)', // new event name
-);
+Fathom::site('CDBUGS')
+    ->event('purchase-early-access')
+    ->update([
+        'name' => 'Purchase Early Access (live)',
+    ]);
 ```
 
 ### Wipe event
@@ -119,7 +123,9 @@ $site = Fathom::updateEvent(
 ```php
 use MarcReichel\LaravelFathom\Fathom;
 
-$site = Fathom::wipeEvent('CDBUGS', 'purchase-early-access');
+Fathom::site('CDBUGS')
+    ->event('purchase-early-access')
+    ->wipe();
 ```
 
 ### Delete event
@@ -127,7 +133,9 @@ $site = Fathom::wipeEvent('CDBUGS', 'purchase-early-access');
 ```php
 use MarcReichel\LaravelFathom\Fathom;
 
-$site = Fathom::deleteEvent('CDBUGS', 'purchase-early-access');
+Fathom::site('CDBUGS')
+    ->event('purchase-early-access')
+    ->delete();
 ```
 
 ### Aggregation
@@ -139,12 +147,14 @@ $site = Fathom::deleteEvent('CDBUGS', 'purchase-early-access');
 ```php
 use MarcReichel\LaravelFathom\Fathom;
 
-$site = Fathom::currentVisitors('CDBUGS', true);
+Fathom::site('CDBUGS')
+    ->currentVisitors();
 ```
 
 ## Roadmap
 
 - Implement aggregation endpoint
+- Implement cursor pagination
 - Write tests
 - Improve documentation
 
