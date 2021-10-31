@@ -2,6 +2,7 @@
 
 namespace MarcReichel\LaravelFathom\Models;
 
+use MarcReichel\LaravelFathom\Exceptions\EntityIdIsMissingException;
 use MarcReichel\LaravelFathom\Traits\HasPagination;
 
 class Event extends Model
@@ -63,5 +64,16 @@ class Event extends Model
         $siteId = $this->siteId;
         $eventId = $this->id;
         return $this->resolveResponse($this->client->delete("sites/$siteId/events/$eventId"));
+    }
+
+    /**
+     * @throws EntityIdIsMissingException
+     */
+    public function aggregate(array $aggregates): Aggregation
+    {
+        if (!isset($this->id)) {
+            throw new EntityIdIsMissingException();
+        }
+        return new Aggregation('event', $this->id, $aggregates);
     }
 }

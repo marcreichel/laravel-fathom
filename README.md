@@ -200,7 +200,40 @@ Fathom::site('CDBUGS')
 
 ### Aggregation
 
-*coming soon...*
+#### Pageviews
+
+```php
+use MarcReichel\LaravelFathom\Fathom;
+
+Fathom::site('CDBUGS')
+    ->aggregate(['visits'])
+    ->groupByDay()
+    ->groupByField('referrer_hostname')
+    ->orderBy('visits', 'desc')
+    ->timezone('Europe/Berlin')
+    ->limit(200)
+    ->where('pathname', 'is', '/pricing')
+    ->where('pathname', 'is not', '/login')
+    ->get();
+```
+
+#### Event
+
+```php
+use MarcReichel\LaravelFathom\Fathom;
+
+Fathom::site('CDBUGS')
+    ->event('signed-up-for-newsletter')
+    ->aggregate(['visits'])
+    ->groupByDay()
+    ->groupByField('referrer_hostname')
+    ->orderBy('visits', 'desc')
+    ->timezone('Europe/Berlin')
+    ->limit(200)
+    ->where('pathname', 'is', '/pricing')
+    ->where('pathname', 'is not', '/login')
+    ->get();
+```
 
 ### Current visitors
 
@@ -221,7 +254,6 @@ composer test
 
 ## Roadmap
 
-- Implement aggregation endpoint
 - Improve documentation
 
 ## Contribution
