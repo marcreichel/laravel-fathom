@@ -2,8 +2,12 @@
 
 namespace MarcReichel\LaravelFathom\Models;
 
+use MarcReichel\LaravelFathom\Traits\HasPagination;
+
 class Site extends Model
 {
+    use HasPagination;
+
     public string|null $id;
 
     public function __construct(string $id = null)
@@ -11,12 +15,6 @@ class Site extends Model
         parent::__construct();
 
         $this->id = $id;
-    }
-
-    public function all(int $limit = null, string $starting_after = null, string $ending_before = null): array|null
-    {
-        // TODO: Implement cursor pagination
-        return $this->resolveResponse($this->client->get('sites'), 'sites');
     }
 
     public function create(string $name, string $sharing = null, string $sharePassword = null): array|null
@@ -30,8 +28,14 @@ class Site extends Model
 
     public function get(): array|null
     {
-        $id = $this->id;
-        return $this->resolveResponse($this->client->get("sites/$id"), "sites/$id");
+        if (isset($this->id)) {
+            $id = $this->id;
+            return $this->resolveResponse($this->client->get("sites/$id"), "sites/$id");
+        }
+
+        $query = $this->paginationQuery();
+        $key = 'sites.' . sha1($query);
+        return $this->resolveResponse($this->client->get('sites?' . $query), $key);
     }
 
     public function update(array $data): array|null

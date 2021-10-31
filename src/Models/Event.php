@@ -2,8 +2,12 @@
 
 namespace MarcReichel\LaravelFathom\Models;
 
+use MarcReichel\LaravelFathom\Traits\HasPagination;
+
 class Event extends Model
 {
+    use HasPagination;
+
     public string|null $siteId;
     public string|null $id;
 
@@ -15,20 +19,20 @@ class Event extends Model
         $this->id = $id;
     }
 
-    public function all(int $limit = null, string $starting_after = null, string $ending_before = null): array|null
-    {
-        // TODO: Implement cursor pagination
-        $siteId = $this->siteId;
-        $endpoint = "sites/$siteId/events";
-        return $this->resolveResponse($this->client->get($endpoint), $endpoint);
-    }
-
     public function get(): array|null
     {
         $siteId = $this->siteId;
-        $eventId = $this->id;
-        $endpoint = "sites/$siteId/events/$eventId";
-        return $this->resolveResponse($this->client->get($endpoint), $endpoint);
+
+        if (isset($this->id)) {
+            $eventId = $this->id;
+            $endpoint = "sites/$siteId/events/$eventId";
+            return $this->resolveResponse($this->client->get($endpoint), $endpoint);
+        }
+
+        $query = $this->paginationQuery();
+        $endpoint = "sites/$siteId/events";
+        $key = $endpoint . sha1($query);
+        return $this->resolveResponse($this->client->get($endpoint . '?' . $query), $key);
     }
 
     public function create(string $name): array|null
