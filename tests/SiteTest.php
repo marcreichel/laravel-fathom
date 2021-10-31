@@ -68,7 +68,7 @@ class SiteTest extends TestCase
     /** @test */
     public function it_should_request_to_create_a_new_site(): void
     {
-        Fathom::sites()->create('Laravel Fathom Test');
+        Fathom::sites()->create(['name' => 'Laravel Fathom Test']);
 
         Http::assertSent(function (Request $request) {
             return $request->url() === 'https://api.usefathom.com/v1/sites' &&
@@ -76,7 +76,7 @@ class SiteTest extends TestCase
                 Str::of($request->body())->contains('name=Laravel+Fathom+Test');
         });
 
-        Fathom::sites()->create('Laravel Fathom Test', 'private', 'test');
+        Fathom::sites()->create(['name' => 'Laravel Fathom Test', 'sharing' => 'private', 'share_password' => 'test']);
 
         Http::assertSent(function (Request $request) {
             return $request->url() === 'https://api.usefathom.com/v1/sites' &&

@@ -11,6 +11,12 @@ class Site extends Model
 
     public string|null $id;
 
+    public array $fillable = [
+        'name',
+        'sharing',
+        'share_password',
+    ];
+
     public function __construct(string $id = null)
     {
         parent::__construct();
@@ -18,13 +24,10 @@ class Site extends Model
         $this->id = $id;
     }
 
-    public function create(string $name, string $sharing = null, string $sharePassword = null): array|null
+    public function create(array $data): array|null
     {
-        return $this->resolveResponse($this->client->asForm()->post('sites', collect([
-            'name' => $name,
-            'sharing' => $sharing,
-            'share_password' => $sharePassword,
-        ])->filter()->toArray()));
+        return $this->resolveResponse($this->client->asForm()->post('sites',
+            collect($data)->only($this->fillable)->filter()->toArray()));
     }
 
     public function get(): array|null
@@ -42,7 +45,8 @@ class Site extends Model
     public function update(array $data): array|null
     {
         $id = $this->id;
-        return $this->resolveResponse($this->client->asForm()->post("sites/$id", $data));
+        return $this->resolveResponse($this->client->asForm()->post("sites/$id",
+            collect($data)->only($this->fillable)->filter()->toArray()));
     }
 
     public function wipe(): array|null
