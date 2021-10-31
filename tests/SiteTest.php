@@ -12,10 +12,40 @@ class SiteTest extends TestCase
     /** @test */
     public function it_should_request_all_sites(): void
     {
-        Fathom::sites()->all();
+        Fathom::sites()->get();
 
         Http::assertSent(function (Request $request) {
             return $request->url() === 'https://api.usefathom.com/v1/sites' && $request->method() === 'GET';
+        });
+    }
+
+    /** @test */
+    public function it_should_request_sites_with_limit(): void
+    {
+        Fathom::sites()->limit(20)->get();
+
+        Http::assertSent(function (Request $request) {
+            return $request->url() === 'https://api.usefathom.com/v1/sites?limit=20' && $request->method() === 'GET';
+        });
+    }
+
+    /** @test */
+    public function it_should_request_sites_after_a_specific_cursor(): void
+    {
+        Fathom::sites()->after('CDBUGS')->get();
+
+        Http::assertSent(function (Request $request) {
+            return $request->url() === 'https://api.usefathom.com/v1/sites?starting_after=CDBUGS' && $request->method() === 'GET';
+        });
+    }
+
+    /** @test */
+    public function it_should_request_sites_before_a_specific_cursor(): void
+    {
+        Fathom::sites()->before('CDBUGS')->get();
+
+        Http::assertSent(function (Request $request) {
+            return $request->url() === 'https://api.usefathom.com/v1/sites?ending_before=CDBUGS' && $request->method() === 'GET';
         });
     }
 

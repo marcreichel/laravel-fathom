@@ -25,7 +25,8 @@ This is a Laravel wrapper for the [Fathom Analytics](https://usefathom.com/ref/S
 ```php
 use MarcReichel\LaravelFathom\Fathom;
 
-Fathom::account()->get();
+Fathom::account()
+    ->get();
 ```
 
 ### List Sites
@@ -33,7 +34,31 @@ Fathom::account()->get();
 ```php
 use MarcReichel\LaravelFathom\Fathom;
 
-Fathom::sites()->all();
+Fathom::sites()
+    ->get();
+```
+
+#### Limit the results
+
+```php
+use MarcReichel\LaravelFathom\Fathom;
+
+Fathom::sites()
+    ->limit(5)
+    ->get();
+```
+
+#### Pagination
+
+```php
+use MarcReichel\LaravelFathom\Fathom;
+
+Fathom::sites()
+    ->after('CDBUGS')
+    ->get();
+Fathom::sites()
+    ->before('CDBUGS')
+    ->get();
 ```
 
 ### Get Site
@@ -41,7 +66,8 @@ Fathom::sites()->all();
 ```php
 use MarcReichel\LaravelFathom\Fathom;
 
-Fathom::site('CDBUGS')->get();
+Fathom::site('CDBUGS')
+    ->get();
 ```
 
 ### Create Site
@@ -49,7 +75,8 @@ Fathom::site('CDBUGS')->get();
 ```php
 use MarcReichel\LaravelFathom\Fathom;
 
-Fathom::sites()->create('Acme Inc');
+Fathom::sites()
+    ->create('Acme Inc');
 ```
 
 ### Update Site
@@ -57,11 +84,12 @@ Fathom::sites()->create('Acme Inc');
 ```php
 use MarcReichel\LaravelFathom\Fathom;
 
-Fathom::site('CDBUGS')->update([
-    'name' => 'Acme Holdings Inc',
-    'sharing' => 'private',
-    'share_password' => 'the-jean-genie',
-]);
+Fathom::site('CDBUGS')
+    ->update([
+        'name' => 'Acme Holdings Inc',
+        'sharing' => 'private',
+        'share_password' => 'the-jean-genie',
+    ]);
 ```
 
 ### Wipe Site
@@ -69,7 +97,8 @@ Fathom::site('CDBUGS')->update([
 ```php
 use MarcReichel\LaravelFathom\Fathom;
 
-Fathom::site('CDBUGS')->wipe();
+Fathom::site('CDBUGS')
+    ->wipe();
 ```
 
 ### Delete Site
@@ -77,7 +106,8 @@ Fathom::site('CDBUGS')->wipe();
 ```php
 use MarcReichel\LaravelFathom\Fathom;
 
-Fathom::site('CDBUGS')->delete();
+Fathom::site('CDBUGS')
+    ->delete();
 ```
 
 ### List Events
@@ -85,7 +115,35 @@ Fathom::site('CDBUGS')->delete();
 ```php
 use MarcReichel\LaravelFathom\Fathom;
 
-Fathom::site('CDBUGS')->events()->all();
+Fathom::site('CDBUGS')
+    ->events()
+    ->get();
+```
+
+#### Limit the results
+
+```php
+use MarcReichel\LaravelFathom\Fathom;
+
+Fathom::site('CDBUGS')
+    ->events()
+    ->limit(5)
+    ->get();
+```
+
+#### Pagination
+
+```php
+use MarcReichel\LaravelFathom\Fathom;
+
+Fathom::site('CDBUGS')
+    ->events()
+    ->after('signed-up-to-newsletter')
+    ->get();
+Fathom::site('CDBUGS')
+    ->events()
+    ->before('signed-up-to-newsletter')
+    ->get();
 ```
 
 ### Get Event
