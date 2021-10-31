@@ -145,4 +145,47 @@ class SiteTest extends TestCase
                 $request->method() === 'GET';
         });
     }
+
+    /** @test */
+    public function it_should_request_pageviews_aggregation(): void
+    {
+        $query = http_build_query(collect([
+            'entity' => 'pageviews',
+            'entity_id' => 'CDBUGS',
+            'aggregates' => 'visits',
+            'date_grouping' => 'day',
+            'field_grouping' => 'referrer_hostname',
+            'sort_by' => 'visits:desc',
+            'timezone' => 'Europe/Berlin',
+            'limit' => '200',
+            'filters' => collect([
+                [
+                    'property' => 'pathname',
+                    'operator' => 'is',
+                    'value' => '/pricing',
+                ],
+                [
+                    'property' => 'pathname',
+                    'operator' => 'is not',
+                    'value' => '/login',
+                ],
+            ])->toJson(),
+        ])->filter()->toArray());
+
+        Fathom::site('CDBUGS')
+            ->aggregate(['visits'])
+            ->groupByDay()
+            ->groupByField('referrer_hostname')
+            ->orderBy('visits', 'desc')
+            ->timezone('Europe/Berlin')
+            ->limit(200)
+            ->where('pathname', 'is', '/pricing')
+            ->where('pathname', 'is not', '/login')
+            ->get();
+
+        Http::assertSent(function (Request $request) use ($query) {
+            return Str::of($request->url())->startsWith('https://api.usefathom.com/v1/aggregations') &&
+                Str::of($request->url())->contains($query);
+        });
+    }
 }
