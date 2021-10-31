@@ -222,7 +222,6 @@ composer test
 ## Roadmap
 
 - Implement aggregation endpoint
-- Implement cursor pagination
 - Improve documentation
 
 ## Contribution
