@@ -21,7 +21,7 @@ abstract class Model
         ]);
     }
 
-    protected function resolveResponse(Response $response, string $cacheKey = null)
+    protected function resolveResponse(Response $response, string $cacheKey = null): array|null
     {
         if (!$cacheKey) {
             return $response->json();

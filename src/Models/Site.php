@@ -2,8 +2,6 @@
 
 namespace MarcReichel\LaravelFathom\Models;
 
-use MarcReichel\LaravelFathom\Fathom;
-
 class Site extends Model
 {
     public string|null $id;
@@ -15,48 +13,46 @@ class Site extends Model
         $this->id = $id;
     }
 
-    public function all(int $limit = null, string $starting_after = null, string $ending_before = null)
+    public function all(int $limit = null, string $starting_after = null, string $ending_before = null): array|null
     {
         // TODO: Implement cursor pagination
-        $self = new static;
-        return $self->resolveResponse($self->client->get('sites'), 'sites');
+        return $this->resolveResponse($this->client->get('sites'), 'sites');
     }
 
-    public function create(string $name, string $sharing = null, string $sharePassword = null)
+    public function create(string $name, string $sharing = null, string $sharePassword = null): array|null
     {
-        $self = new static;
-        return $self->resolveResponse($self->client->asForm()->post('sites', collect([
+        return $this->resolveResponse($this->client->asForm()->post('sites', collect([
             'name' => $name,
             'sharing' => $sharing,
             'share_password' => $sharePassword,
         ])->filter()->toArray()));
     }
 
-    public function get()
+    public function get(): array|null
     {
         $id = $this->id;
         return $this->resolveResponse($this->client->get("sites/$id"), "sites/$id");
     }
 
-    public function update(array $data)
+    public function update(array $data): array|null
     {
         $id = $this->id;
         return $this->resolveResponse($this->client->asForm()->post("sites/$id", $data));
     }
 
-    public function wipe()
+    public function wipe(): array|null
     {
         $id = $this->id;
         return $this->resolveResponse($this->client->delete("sites/$id/data"));
     }
 
-    public function delete()
+    public function delete(): array|null
     {
         $id = $this->id;
         return $this->resolveResponse($this->client->delete("sites/$id"));
     }
 
-    public function currentVisitors(bool $detailed = false)
+    public function currentVisitors(bool $detailed = false): array|null
     {
         $query = http_build_query(collect([
             'site_id' => $this->id,

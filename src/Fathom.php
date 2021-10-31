@@ -2,19 +2,11 @@
 
 namespace MarcReichel\LaravelFathom;
 
-use Illuminate\Http\Client\PendingRequest;
 use MarcReichel\LaravelFathom\Models\Account;
 use MarcReichel\LaravelFathom\Models\Site;
 
 class Fathom
 {
-    protected PendingRequest $client;
-
-    public function __construct()
-    {
-        $this->client = Http::client();
-    }
-
     public static function account(): Account
     {
         return new Account();
