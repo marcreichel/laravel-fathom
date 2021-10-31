@@ -25,8 +25,7 @@ This is a Laravel wrapper for the [Fathom Analytics](https://usefathom.com/ref/S
 ```php
 use MarcReichel\LaravelFathom\Fathom;
 
-Fathom::account()
-    ->get();
+Fathom::account()->get();
 ```
 
 ### List Sites
@@ -34,8 +33,7 @@ Fathom::account()
 ```php
 use MarcReichel\LaravelFathom\Fathom;
 
-Fathom::sites()
-    ->get();
+Fathom::sites()->get();
 ```
 
 #### Limit the results
@@ -43,9 +41,7 @@ Fathom::sites()
 ```php
 use MarcReichel\LaravelFathom\Fathom;
 
-Fathom::sites()
-    ->limit(5)
-    ->get();
+Fathom::sites()->limit(5)->get();
 ```
 
 #### Pagination
@@ -53,12 +49,8 @@ Fathom::sites()
 ```php
 use MarcReichel\LaravelFathom\Fathom;
 
-Fathom::sites()
-    ->after('CDBUGS')
-    ->get();
-Fathom::sites()
-    ->before('CDBUGS')
-    ->get();
+Fathom::sites()->after('CDBUGS')->get();
+Fathom::sites()->before('CDBUGS')->get();
 ```
 
 ### Get Site
@@ -66,8 +58,7 @@ Fathom::sites()
 ```php
 use MarcReichel\LaravelFathom\Fathom;
 
-Fathom::site('CDBUGS')
-    ->get();
+Fathom::site('CDBUGS')->get();
 ```
 
 ### Create Site
@@ -75,8 +66,11 @@ Fathom::site('CDBUGS')
 ```php
 use MarcReichel\LaravelFathom\Fathom;
 
-Fathom::sites()
-    ->create('Acme Inc');
+Fathom::sites()->create([
+    'name' => 'Acme Inc', // required
+    'sharing' => 'private', // optional, one of 'none', 'private' or 'public'
+    'share_password' => 'the-jean-genie', // optional
+]);
 ```
 
 ### Update Site
@@ -84,12 +78,11 @@ Fathom::sites()
 ```php
 use MarcReichel\LaravelFathom\Fathom;
 
-Fathom::site('CDBUGS')
-    ->update([
-        'name' => 'Acme Holdings Inc',
-        'sharing' => 'private',
-        'share_password' => 'the-jean-genie',
-    ]);
+Fathom::site('CDBUGS')->update([
+    'name' => 'Acme Holdings Inc',
+    'sharing' => 'private',
+    'share_password' => 'the-jean-genie',
+]);
 ```
 
 ### Wipe Site
@@ -97,8 +90,7 @@ Fathom::site('CDBUGS')
 ```php
 use MarcReichel\LaravelFathom\Fathom;
 
-Fathom::site('CDBUGS')
-    ->wipe();
+Fathom::site('CDBUGS')->wipe();
 ```
 
 ### Delete Site
@@ -106,8 +98,7 @@ Fathom::site('CDBUGS')
 ```php
 use MarcReichel\LaravelFathom\Fathom;
 
-Fathom::site('CDBUGS')
-    ->delete();
+Fathom::site('CDBUGS')->delete();
 ```
 
 ### List Events
@@ -115,9 +106,7 @@ Fathom::site('CDBUGS')
 ```php
 use MarcReichel\LaravelFathom\Fathom;
 
-Fathom::site('CDBUGS')
-    ->events()
-    ->get();
+Fathom::site('CDBUGS')->events()->get();
 ```
 
 #### Limit the results
@@ -125,10 +114,7 @@ Fathom::site('CDBUGS')
 ```php
 use MarcReichel\LaravelFathom\Fathom;
 
-Fathom::site('CDBUGS')
-    ->events()
-    ->limit(5)
-    ->get();
+Fathom::site('CDBUGS')->events()->limit(5)->get();
 ```
 
 #### Pagination
@@ -163,7 +149,9 @@ use MarcReichel\LaravelFathom\Fathom;
 
 Fathom::site('CDBUGS')
     ->events()
-    ->create('Purchase early access');
+    ->create([
+        'name' => 'Purchase early access',
+    ]);
 ```
 
 ### Update Event

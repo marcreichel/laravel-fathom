@@ -12,6 +12,10 @@ class Event extends Model
     public string|null $siteId;
     public string|null $id;
 
+    public array $fillable = [
+        'name',
+    ];
+
     public function __construct(string|null $siteId, string $id = null)
     {
         parent::__construct();
@@ -36,12 +40,11 @@ class Event extends Model
         return $this->resolveResponse($this->client->get($endpoint . '?' . $query), $key);
     }
 
-    public function create(string $name): array|null
+    public function create(array $data): array|null
     {
         $siteId = $this->siteId;
-        return $this->resolveResponse($this->client->asForm()->post("sites/$siteId/events", [
-            'name' => $name,
-        ]));
+        return $this->resolveResponse($this->client->asForm()->post("sites/$siteId/events",
+            collect($data)->only($this->fillable)->filter()->toArray()));
     }
 
     public function update(array $data): array|null
@@ -49,7 +52,7 @@ class Event extends Model
         $siteId = $this->siteId;
         $eventId = $this->id;
         return $this->resolveResponse($this->client->asForm()->post("sites/$siteId/events/$eventId",
-            collect($data)->only('name')->toArray()));
+            collect($data)->only($this->fillable)->filter()->toArray()));
     }
 
     public function wipe(): array|null

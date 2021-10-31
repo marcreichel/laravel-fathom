@@ -56,7 +56,7 @@ class EventTest extends TestCase
     /** @test */
     public function it_should_request_to_create_a_new_event(): void
     {
-        Fathom::site('CDBUGS')->events()->create('Registered for early access');
+        Fathom::site('CDBUGS')->events()->create(['name' => 'Registered for early access']);
 
         Http::assertSent(function (Request $request) {
             return $request->url() === 'https://api.usefathom.com/v1/sites/CDBUGS/events' &&
