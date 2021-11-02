@@ -11,7 +11,7 @@
 [![GitHub](https://img.shields.io/github/license/marcreichel/laravel-fathom)](https://packagist.org/packages/marcreichel/laravel-fathom)
 [![Gitmoji](https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg)](https://gitmoji.dev)
 
-This is a Laravel wrapper for the [Fathom Analytics](https://usefathom.com/ref/SILMHC) API.
+This is an unofficial Laravel wrapper for the [Fathom Analytics](https://usefathom.com/ref/SILMHC) API.
 
 [![Fathom Analytics](art/fathom-banner.png)](https://usefathom.com/ref/SILMHC)
 
