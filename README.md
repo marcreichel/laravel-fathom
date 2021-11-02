@@ -245,6 +245,15 @@ composer test
 
 - Improve documentation
 
-## Contribution
+## Contributing
 
-Pull requests are welcome :)
+Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
+
+## Credits
+
+- [Marc Reichel](https://github.com/marcreichel)
+- [All Contributors](https://github.com/marcreichel/laravel-fathom/contributors)
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
