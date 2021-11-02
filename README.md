@@ -17,7 +17,32 @@ This is a Laravel wrapper for the [Fathom Analytics](https://usefathom.com/ref/S
 
 ## Installation
 
-*coming soon...*
+You can install this package via composer:
+
+```bash
+composer require marcreichel/laravel-fathom
+```
+
+The package will automatically register its service provider.
+
+To publish the config file to `config/fathom.php` run:
+
+```bash
+php artisan vendor:publish --provider="MarcReichel\LaravelFathom\LaravelFathomServiceProvider"
+```
+
+Default content of `config/fathom.php`:
+
+```php
+<?php
+
+return [
+    /**
+     * Your Fathom API token
+     */
+    'api_token' => env('FATHOM_API_TOKEN'),
+];
+```
 
 ## Usage
 
