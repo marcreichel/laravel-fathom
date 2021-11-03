@@ -41,12 +41,67 @@ return [
      * Your Fathom API token
      */
     'api_token' => env('FATHOM_API_TOKEN'),
+    
+    /**
+     * The site ID to use for tracking
+     */
+    'site_id' => env('FATHOM_SITE_ID'),
+
+    /**
+     * Tracking code domain
+     */
+    'domain' => env('FATHOM_DOMAIN', 'cdn.usefathom.com'),
+
+    /**
+     * Honor Do Not Track
+     */
+    'honor_dnt' => env('FATHOM_HONOR_DNT', false),
+
+    /**
+     * Disable automatic tracking
+     */
+    'disable_auto_tracking' => env('FATHOM_DISABLE_AUTO_TRACKING', false),
+
+    /**
+     * Ignore canonical links
+     */
+    'ignore_canonicals' => env('FATHOM_IGNORE_CANONICALS', false),
+
+    /**
+     * Excluded domains
+     */
+    'excluded_domains' => env('FATHOM_EXCLUDED_DOMAINS'),
+
+    /**
+     * Included domains
+     */
+    'included_domains' => env('FATHOM_INCLUDED_DOMAINS'),
+
+    /**
+     * Single Page Application Mode
+     */
+    'spa_mode' => env('FATHOM_SPA_MODE'),
 ];
 ```
 
 ## Usage
 
-### Get Account
+### Tracking Code
+
+Add the tracking code to your `<head>` section:
+
+```html
+<head>
+    <!-- ... -->
+    <x-fathom-tracking-code/>
+</head>
+```
+
+The tracking code will be automatically rendered respecting your configuration.
+
+### API
+
+#### Get Account
 
 ```php
 use MarcReichel\LaravelFathom\Fathom;
@@ -54,7 +109,7 @@ use MarcReichel\LaravelFathom\Fathom;
 Fathom::account()->get();
 ```
 
-### List Sites
+#### List Sites
 
 ```php
 use MarcReichel\LaravelFathom\Fathom;
@@ -62,7 +117,7 @@ use MarcReichel\LaravelFathom\Fathom;
 Fathom::sites()->get();
 ```
 
-#### Limit the results
+##### Limit the results
 
 ```php
 use MarcReichel\LaravelFathom\Fathom;
@@ -70,7 +125,7 @@ use MarcReichel\LaravelFathom\Fathom;
 Fathom::sites()->limit(5)->get();
 ```
 
-#### Pagination
+##### Pagination
 
 ```php
 use MarcReichel\LaravelFathom\Fathom;
@@ -79,7 +134,7 @@ Fathom::sites()->after('CDBUGS')->get();
 Fathom::sites()->before('CDBUGS')->get();
 ```
 
-### Get Site
+#### Get Site
 
 ```php
 use MarcReichel\LaravelFathom\Fathom;
@@ -87,7 +142,7 @@ use MarcReichel\LaravelFathom\Fathom;
 Fathom::site('CDBUGS')->get();
 ```
 
-### Create Site
+#### Create Site
 
 ```php
 use MarcReichel\LaravelFathom\Fathom;
@@ -99,7 +154,7 @@ Fathom::sites()->create([
 ]);
 ```
 
-### Update Site
+#### Update Site
 
 ```php
 use MarcReichel\LaravelFathom\Fathom;
@@ -111,7 +166,7 @@ Fathom::site('CDBUGS')->update([
 ]);
 ```
 
-### Wipe Site
+#### Wipe Site
 
 ```php
 use MarcReichel\LaravelFathom\Fathom;
@@ -119,7 +174,7 @@ use MarcReichel\LaravelFathom\Fathom;
 Fathom::site('CDBUGS')->wipe();
 ```
 
-### Delete Site
+#### Delete Site
 
 ```php
 use MarcReichel\LaravelFathom\Fathom;
@@ -127,7 +182,7 @@ use MarcReichel\LaravelFathom\Fathom;
 Fathom::site('CDBUGS')->delete();
 ```
 
-### List Events
+#### List Events
 
 ```php
 use MarcReichel\LaravelFathom\Fathom;
@@ -135,7 +190,7 @@ use MarcReichel\LaravelFathom\Fathom;
 Fathom::site('CDBUGS')->events()->get();
 ```
 
-#### Limit the results
+##### Limit the results
 
 ```php
 use MarcReichel\LaravelFathom\Fathom;
@@ -143,7 +198,7 @@ use MarcReichel\LaravelFathom\Fathom;
 Fathom::site('CDBUGS')->events()->limit(5)->get();
 ```
 
-#### Pagination
+##### Pagination
 
 ```php
 use MarcReichel\LaravelFathom\Fathom;
@@ -158,7 +213,7 @@ Fathom::site('CDBUGS')
     ->get();
 ```
 
-### Get Event
+#### Get Event
 
 ```php
 use MarcReichel\LaravelFathom\Fathom;
@@ -168,7 +223,7 @@ Fathom::site('CDBUGS')
     ->get();
 ```
 
-### Create Event
+#### Create Event
 
 ```php
 use MarcReichel\LaravelFathom\Fathom;
@@ -180,7 +235,7 @@ Fathom::site('CDBUGS')
     ]);
 ```
 
-### Update Event
+#### Update Event
 
 ```php
 use MarcReichel\LaravelFathom\Fathom;
@@ -192,7 +247,7 @@ Fathom::site('CDBUGS')
     ]);
 ```
 
-### Wipe event
+#### Wipe event
 
 ```php
 use MarcReichel\LaravelFathom\Fathom;
@@ -202,7 +257,7 @@ Fathom::site('CDBUGS')
     ->wipe();
 ```
 
-### Delete event
+#### Delete event
 
 ```php
 use MarcReichel\LaravelFathom\Fathom;
@@ -212,9 +267,9 @@ Fathom::site('CDBUGS')
     ->delete();
 ```
 
-### Aggregation
+#### Aggregation
 
-#### Pageviews
+##### Pageviews
 
 ```php
 use MarcReichel\LaravelFathom\Fathom;
@@ -231,7 +286,7 @@ Fathom::site('CDBUGS')
     ->get();
 ```
 
-#### Event
+##### Event
 
 ```php
 use MarcReichel\LaravelFathom\Fathom;
@@ -249,7 +304,7 @@ Fathom::site('CDBUGS')
     ->get();
 ```
 
-### Current visitors
+#### Current visitors
 
 ```php
 use MarcReichel\LaravelFathom\Fathom;
