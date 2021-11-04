@@ -61,7 +61,7 @@ class FathomTrackingCode extends Component
         $match = false;
 
         foreach (config('fathom.excluded_user_agents', []) as $userAgentPrefix) {
-            if (Str::startsWith($this->request->userAgent(), $userAgentPrefix)) {
+            if (Str::startsWith($this->request->userAgent() ?? '', $userAgentPrefix)) {
                 $match = true;
             }
         }
@@ -79,7 +79,7 @@ class FathomTrackingCode extends Component
         $match = false;
 
         foreach (config('fathom.excluded_ip_addresses', []) as $ipAddress) {
-            if (Str::startsWith($this->request->ip(), $ipAddress)) {
+            if (Str::startsWith($this->request->ip() ?? '', $ipAddress)) {
                 $match = true;
             }
         }
