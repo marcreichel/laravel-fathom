@@ -17,7 +17,7 @@ class LaravelFathomServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__ . '/../config/fathom.php' => config_path('fathom.php'),
-        ]);
+        ], 'fathom-config');
 
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'laravel-fathom');
 
