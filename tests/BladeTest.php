@@ -11,6 +11,7 @@ class BladeTest extends ComponentTestCase
         parent::setUp();
 
         config(['fathom.site_id' => 'CDBUGS']);
+        config(['fathom.environments' => ['testing']]);
     }
 
     /** @test
@@ -33,6 +34,36 @@ HTML;
     public function the_component_is_not_rendered_without_site_id(): void
     {
         config(['fathom.site_id' => null]);
+
+        $this->assertComponentRenders('', '<x-fathom-tracking-code/>');
+    }
+
+    /** @test
+     * @throws RuntimeException
+     */
+    public function the_component_is_not_rendered_within_wrong_environment(): void
+    {
+        config(['fathom.environments' => ['local']]);
+
+        $this->assertComponentRenders('', '<x-fathom-tracking-code/>');
+    }
+
+    /** @test
+     * @throws RuntimeException
+     */
+    public function the_component_is_not_rendered_if_user_agent_matches(): void
+    {
+        config(['fathom.excluded_user_agents' => ['Symfony']]);
+
+        $this->assertComponentRenders('', '<x-fathom-tracking-code/>');
+    }
+
+    /** @test
+     * @throws RuntimeException
+     */
+    public function the_component_is_not_rendered_if_ip_address_matches(): void
+    {
+        config(['fathom.excluded_ip_addresses' => ['127.0.0.1']]);
 
         $this->assertComponentRenders('', '<x-fathom-tracking-code/>');
     }

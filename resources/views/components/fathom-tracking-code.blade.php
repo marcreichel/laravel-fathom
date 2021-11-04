@@ -1,4 +1,4 @@
-@if($siteId)
+@if($siteId && $doTracking)
 <script src="{{ $script }}"
         data-site="{{ $siteId }}"
         defer

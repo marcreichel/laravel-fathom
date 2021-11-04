@@ -19,6 +19,36 @@ return [
     'domain' => env('FATHOM_DOMAIN', 'cdn.usefathom.com'),
 
     /**
+     * Environments to enable Fathom tracking on
+     */
+    'environments' => [
+        'production',
+    ],
+
+    /**
+     * Excluded User Agent Strings
+     *
+     * User Agents that start with these strings will not be tracked.
+     */
+    'excluded_user_agents' => [
+        // 'OhDear.app ',
+    ],
+
+    /**
+     * Excluded IP Addresses
+     *
+     * IP Addresses that will not be tracked.
+     */
+    'excluded_ip_addresses' => [
+        //
+    ],
+
+    /**
+     * Do authenticated users should be tracked?
+     */
+    'track_authenticated_users' => true,
+
+    /**
      * Honor Do Not Track
      *
      * @see https://usefathom.com/docs/script/script-advanced#dnt
