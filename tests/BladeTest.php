@@ -30,6 +30,16 @@ HTML;
     /** @test
      * @throws RuntimeException
      */
+    public function the_component_is_not_rendered_without_site_id(): void
+    {
+        config(['fathom.site_id' => null]);
+
+        $this->assertComponentRenders('', '<x-fathom-tracking-code/>');
+    }
+
+    /** @test
+     * @throws RuntimeException
+     */
     public function we_can_specify_domain(): void
     {
         config(['fathom.domain' => 'lion.phpunit.com']);
@@ -54,7 +64,7 @@ HTML;
 <script src="https://cdn.usefathom.com/script.js"
         data-site="CDBUGS"
         defer
-        data-honor-dnt="true"                                       ></script>
+        data-honor-dnt="true"                                        ></script>
 HTML;
         $this->assertComponentRenders($expected, '<x-fathom-tracking-code/>');
     }
@@ -70,7 +80,7 @@ HTML;
 <script src="https://cdn.usefathom.com/script.js"
         data-site="CDBUGS"
         defer
-                data-auto="false"                               ></script>
+                data-auto="false"                                ></script>
 HTML;
         $this->assertComponentRenders($expected, '<x-fathom-tracking-code/>');
     }
@@ -86,7 +96,7 @@ HTML;
 <script src="https://cdn.usefathom.com/script.js"
         data-site="CDBUGS"
         defer
-                        data-canonical="false"                       ></script>
+                        data-canonical="false"                        ></script>
 HTML;
         $this->assertComponentRenders($expected, '<x-fathom-tracking-code/>');
     }
@@ -102,7 +112,7 @@ HTML;
 <script src="https://cdn.usefathom.com/script.js"
         data-site="CDBUGS"
         defer
-                                data-excluded-domains="localhost"               ></script>
+                                data-excluded-domains="localhost"                ></script>
 HTML;
         $this->assertComponentRenders($expected, '<x-fathom-tracking-code/>');
     }
@@ -118,7 +128,7 @@ HTML;
 <script src="https://cdn.usefathom.com/script.js"
         data-site="CDBUGS"
         defer
-                                        data-included-domains="localhost"       ></script>
+                                        data-included-domains="localhost"        ></script>
 HTML;
         $this->assertComponentRenders($expected, '<x-fathom-tracking-code/>');
     }
