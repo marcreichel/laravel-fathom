@@ -34,14 +34,14 @@ php artisan vendor:publish --tag=fathom-config
 
 ## Usage
 
-### Tracking Code
+### Script Tag
 
-Add the tracking code to your `<head>` section:
+Add the Fathom script to your `<head>` section:
 
 ```html
 <head>
     <!-- ... -->
-    <x-fathom-tracking-code/>
+    <x-fathom-script/>
 </head>
 ```
 

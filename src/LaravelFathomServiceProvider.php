@@ -4,7 +4,7 @@ namespace MarcReichel\LaravelFathom;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
-use MarcReichel\LaravelFathom\Views\Components\FathomTrackingCode;
+use MarcReichel\LaravelFathom\Views\Components\FathomScript;
 
 class LaravelFathomServiceProvider extends ServiceProvider
 {
@@ -22,7 +22,7 @@ class LaravelFathomServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'laravel-fathom');
 
 
-        Blade::component('fathom-tracking-code', FathomTrackingCode::class);
+        Blade::component('fathom-script', FathomScript::class);
     }
 
     /**

@@ -25,7 +25,7 @@ class BladeTest extends ComponentTestCase
         defer
                                                ></script>
 HTML;
-        $this->assertComponentRenders($expected, '<x-fathom-tracking-code/>');
+        $this->assertComponentRenders($expected, '<x-fathom-script/>');
     }
 
     /** @test
@@ -35,7 +35,7 @@ HTML;
     {
         config(['fathom.site_id' => null]);
 
-        $this->assertComponentRenders('', '<x-fathom-tracking-code/>');
+        $this->assertComponentRenders('', '<x-fathom-script/>');
     }
 
     /** @test
@@ -45,7 +45,7 @@ HTML;
     {
         config(['fathom.environments' => ['local']]);
 
-        $this->assertComponentRenders('', '<x-fathom-tracking-code/>');
+        $this->assertComponentRenders('', '<x-fathom-script/>');
     }
 
     /** @test
@@ -55,7 +55,7 @@ HTML;
     {
         config(['fathom.excluded_user_agents' => ['Symfony']]);
 
-        $this->assertComponentRenders('', '<x-fathom-tracking-code/>');
+        $this->assertComponentRenders('', '<x-fathom-script/>');
     }
 
     /** @test
@@ -65,7 +65,7 @@ HTML;
     {
         config(['fathom.excluded_ip_addresses' => ['127.0.0.1']]);
 
-        $this->assertComponentRenders('', '<x-fathom-tracking-code/>');
+        $this->assertComponentRenders('', '<x-fathom-script/>');
     }
 
     /** @test
@@ -81,7 +81,7 @@ HTML;
         defer
                                                ></script>
 HTML;
-        $this->assertComponentRenders($expected, '<x-fathom-tracking-code/>');
+        $this->assertComponentRenders($expected, '<x-fathom-script/>');
     }
 
     /** @test
@@ -97,7 +97,7 @@ HTML;
         defer
         data-honor-dnt="true"                                        ></script>
 HTML;
-        $this->assertComponentRenders($expected, '<x-fathom-tracking-code/>');
+        $this->assertComponentRenders($expected, '<x-fathom-script/>');
     }
 
     /** @test
@@ -113,7 +113,7 @@ HTML;
         defer
                 data-auto="false"                                ></script>
 HTML;
-        $this->assertComponentRenders($expected, '<x-fathom-tracking-code/>');
+        $this->assertComponentRenders($expected, '<x-fathom-script/>');
     }
 
     /** @test
@@ -129,7 +129,7 @@ HTML;
         defer
                         data-canonical="false"                        ></script>
 HTML;
-        $this->assertComponentRenders($expected, '<x-fathom-tracking-code/>');
+        $this->assertComponentRenders($expected, '<x-fathom-script/>');
     }
 
     /** @test
@@ -145,7 +145,7 @@ HTML;
         defer
                                 data-excluded-domains="localhost"                ></script>
 HTML;
-        $this->assertComponentRenders($expected, '<x-fathom-tracking-code/>');
+        $this->assertComponentRenders($expected, '<x-fathom-script/>');
     }
 
     /** @test
@@ -161,7 +161,7 @@ HTML;
         defer
                                         data-included-domains="localhost"        ></script>
 HTML;
-        $this->assertComponentRenders($expected, '<x-fathom-tracking-code/>');
+        $this->assertComponentRenders($expected, '<x-fathom-script/>');
     }
 
     /** @test
@@ -177,6 +177,6 @@ HTML;
         defer
                                                 data-spa="auto"></script>
 HTML;
-        $this->assertComponentRenders($expected, '<x-fathom-tracking-code/>');
+        $this->assertComponentRenders($expected, '<x-fathom-script/>');
     }
 }

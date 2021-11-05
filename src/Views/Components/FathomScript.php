@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\View\Component;
 
-class FathomTrackingCode extends Component
+class FathomScript extends Component
 {
     public bool $doTracking = false;
 
@@ -29,7 +29,7 @@ class FathomTrackingCode extends Component
      */
     public function render(): View
     {
-        return view('laravel-fathom::components.fathom-tracking-code', [
+        return view('laravel-fathom::components.fathom-script', [
             'script' => 'https://' . config('fathom.domain') . '/script.js',
             'siteId' => config('fathom.site_id'),
             'honorDnt' => config('fathom.honor_dnt'),
