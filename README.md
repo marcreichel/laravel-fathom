@@ -12,7 +12,7 @@
 [![Gitmoji](https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg)](https://gitmoji.dev)
 
 This is an unofficial Laravel wrapper for the [Fathom Analytics](https://usefathom.com/ref/SILMHC) API and provides a
-neat little Blade component for the Fathom tracking script tag including some helpful configurations.
+neat little Blade component for the Fathom script tag including some helpful configurations.
 
 [![Fathom Analytics](art/fathom-banner.png)](https://usefathom.com/ref/SILMHC)
 
