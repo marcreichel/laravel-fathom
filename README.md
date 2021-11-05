@@ -45,7 +45,7 @@ Add the Fathom script to your `<head>` section:
 </head>
 ```
 
-The tracking code will be automatically rendered respecting your configuration.
+The script tag will be automatically rendered respecting your configuration.
 
 ### API
 
