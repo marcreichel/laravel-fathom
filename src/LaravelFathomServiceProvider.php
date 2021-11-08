@@ -4,6 +4,7 @@ namespace MarcReichel\LaravelFathom;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use MarcReichel\LaravelFathom\Console\InstallCommand;
 use MarcReichel\LaravelFathom\Views\Components\FathomScript;
 
 class LaravelFathomServiceProvider extends ServiceProvider
@@ -17,12 +18,17 @@ class LaravelFathomServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__ . '/../config/fathom.php' => config_path('fathom.php'),
-        ], 'fathom-config');
+        ], 'fathom:config');
 
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'laravel-fathom');
 
-
         Blade::component('fathom-script', FathomScript::class);
+
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                InstallCommand::class,
+            ]);
+        }
     }
 
     /**
