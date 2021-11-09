@@ -29,7 +29,7 @@ The package will automatically register its service provider.
 To publish the config file to `config/fathom.php` run:
 
 ```bash
-php artisan vendor:publish --tag=fathom-config
+php artisan fathom:install
 ```
 
 ## Documentation
@@ -43,10 +43,6 @@ Run the tests with:
 ```bash
 composer test
 ```
-
-## Roadmap
-
-- Improve documentation
 
 ## Contributing
 
