@@ -3,6 +3,7 @@
 ## List Events
 
 ```php
+// torchlight! {"lineNumbers": false}
 use MarcReichel\LaravelFathom\Fathom;
 
 Fathom::site('CDBUGS')->events()->get();
@@ -11,6 +12,7 @@ Fathom::site('CDBUGS')->events()->get();
 ### Limit the results
 
 ```php
+// torchlight! {"lineNumbers": false}
 use MarcReichel\LaravelFathom\Fathom;
 
 Fathom::site('CDBUGS')->events()->limit(5)->get();
@@ -19,6 +21,7 @@ Fathom::site('CDBUGS')->events()->limit(5)->get();
 ### (Cursor) Pagination
 
 ```php
+// torchlight! {"lineNumbers": false}
 use MarcReichel\LaravelFathom\Fathom;
 
 Fathom::site('CDBUGS')
@@ -34,6 +37,7 @@ Fathom::site('CDBUGS')
 ## Get Event
 
 ```php
+// torchlight! {"lineNumbers": false}
 use MarcReichel\LaravelFathom\Fathom;
 
 Fathom::site('CDBUGS')
@@ -44,6 +48,7 @@ Fathom::site('CDBUGS')
 ## Create Event
 
 ```php
+// torchlight! {"lineNumbers": false}
 use MarcReichel\LaravelFathom\Fathom;
 
 Fathom::site('CDBUGS')
@@ -56,6 +61,7 @@ Fathom::site('CDBUGS')
 ## Update Event
 
 ```php
+// torchlight! {"lineNumbers": false}
 use MarcReichel\LaravelFathom\Fathom;
 
 Fathom::site('CDBUGS')
@@ -68,6 +74,7 @@ Fathom::site('CDBUGS')
 ## Wipe Event
 
 ```php
+// torchlight! {"lineNumbers": false}
 use MarcReichel\LaravelFathom\Fathom;
 
 Fathom::site('CDBUGS')
@@ -78,6 +85,7 @@ Fathom::site('CDBUGS')
 ## Delete Event
 
 ```php
+// torchlight! {"lineNumbers": false}
 use MarcReichel\LaravelFathom\Fathom;
 
 Fathom::site('CDBUGS')
@@ -88,6 +96,7 @@ Fathom::site('CDBUGS')
 ## Aggregation
 
 ```php
+// torchlight! {"lineNumbers": false}
 use MarcReichel\LaravelFathom\Fathom;
 
 Fathom::site('CDBUGS')

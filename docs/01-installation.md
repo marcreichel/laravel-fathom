@@ -21,6 +21,7 @@ php artisan fathom:install
 Default content of `config/fathom.php`:
 
 ```php
+// torchlight! {"lineNumbers": false}
 <?php
 
 return [

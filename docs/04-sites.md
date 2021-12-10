@@ -5,6 +5,7 @@
 Return a list of all sites your API key owns. Sites are sorted by `created_at` ascending.
 
 ```php
+// torchlight! {"lineNumbers": false}
 use MarcReichel\LaravelFathom\Fathom;
 
 Fathom::sites()->get();
@@ -13,6 +14,7 @@ Fathom::sites()->get();
 ### Limit the results
 
 ```php
+// torchlight! {"lineNumbers": false}
 use MarcReichel\LaravelFathom\Fathom;
 
 Fathom::sites()->limit(5)->get();
@@ -21,6 +23,7 @@ Fathom::sites()->limit(5)->get();
 ### (Cursor) Pagination
 
 ```php
+// torchlight! {"lineNumbers": false}
 use MarcReichel\LaravelFathom\Fathom;
 
 Fathom::sites()->after('CDBUGS')->get();
@@ -30,6 +33,7 @@ Fathom::sites()->before('CDBUGS')->get();
 ## Get Site
 
 ```php
+// torchlight! {"lineNumbers": false}
 use MarcReichel\LaravelFathom\Fathom;
 
 Fathom::site('CDBUGS')->get();
@@ -38,6 +42,7 @@ Fathom::site('CDBUGS')->get();
 ## Create Site
 
 ```php
+// torchlight! {"lineNumbers": false}
 use MarcReichel\LaravelFathom\Fathom;
 
 Fathom::sites()->create([
@@ -50,6 +55,7 @@ Fathom::sites()->create([
 ## Update Site
 
 ```php
+// torchlight! {"lineNumbers": false}
 use MarcReichel\LaravelFathom\Fathom;
 
 Fathom::site('CDBUGS')->update([
@@ -65,6 +71,7 @@ Wipe all pageviews & event completions from a website. This would typically be u
 statistics or right before you launch a website (to remove test data).
 
 ```php
+// torchlight! {"lineNumbers": false}
 use MarcReichel\LaravelFathom\Fathom;
 
 Fathom::site('CDBUGS')->wipe();
@@ -75,6 +82,7 @@ Fathom::site('CDBUGS')->wipe();
 Delete a site (careful, you can't undo this).
 
 ```php
+// torchlight! {"lineNumbers": false}
 use MarcReichel\LaravelFathom\Fathom;
 
 Fathom::site('CDBUGS')->delete();
@@ -83,6 +91,7 @@ Fathom::site('CDBUGS')->delete();
 ## Aggregation
 
 ```php
+// torchlight! {"lineNumbers": false}
 use MarcReichel\LaravelFathom\Fathom;
 
 Fathom::site('CDBUGS')
@@ -100,6 +109,7 @@ Fathom::site('CDBUGS')
 ## Current Visitors
 
 ```php
+// torchlight! {"lineNumbers": false}
 use MarcReichel\LaravelFathom\Fathom;
 
 $detailed = false; // Optional

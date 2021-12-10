@@ -3,6 +3,7 @@
 Add the Fathom script to your `<head>` section:
 
 ```blade
+// torchlight! {"lineNumbers": false}
 <!DOCTYPE html>
 <html>
 <head> <!-- [tl! focus] -->
