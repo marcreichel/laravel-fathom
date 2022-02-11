@@ -49,7 +49,7 @@
     },
     "require": {
         "php": "^8.0",
-        "illuminate/support": "^8.68",
+        "illuminate/support": "^8.68|^9.0",
         "guzzlehttp/guzzle": "~6.0|~7.0"
     }
 }
