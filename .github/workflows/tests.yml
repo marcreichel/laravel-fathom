@@ -13,7 +13,7 @@ jobs:
         os: [ubuntu-latest]
         php: [8.0]
         laravel: [9.*]
-        stability: [prefer-lowest, prefer-stable]
+        stability: [prefer-stable]
         include:
           - laravel: 9.*
             testbench: 7.*
