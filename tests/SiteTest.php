@@ -156,7 +156,7 @@ class SiteTest extends TestCase
     public function it_should_request_pageviews_aggregation(): void
     {
         $query = http_build_query(collect([
-            'entity' => 'pageviews',
+            'entity' => 'pageview',
             'entity_id' => 'CDBUGS',
             'aggregates' => 'visits',
         ])->filter()->toArray());
@@ -178,7 +178,7 @@ class SiteTest extends TestCase
     public function it_should_request_pageviews_aggregation_grouped_by_hour(): void
     {
         $query = http_build_query(collect([
-            'entity' => 'pageviews',
+            'entity' => 'pageview',
             'entity_id' => 'CDBUGS',
             'aggregates' => 'visits',
             'date_grouping' => 'hour',
@@ -202,7 +202,7 @@ class SiteTest extends TestCase
     public function it_should_request_pageviews_aggregation_grouped_by_day(): void
     {
         $query = http_build_query(collect([
-            'entity' => 'pageviews',
+            'entity' => 'pageview',
             'entity_id' => 'CDBUGS',
             'aggregates' => 'visits',
             'date_grouping' => 'day',
@@ -226,7 +226,7 @@ class SiteTest extends TestCase
     public function it_should_request_pageviews_aggregation_grouped_by_month(): void
     {
         $query = http_build_query(collect([
-            'entity' => 'pageviews',
+            'entity' => 'pageview',
             'entity_id' => 'CDBUGS',
             'aggregates' => 'visits',
             'date_grouping' => 'month',
@@ -250,7 +250,7 @@ class SiteTest extends TestCase
     public function it_should_request_pageviews_aggregation_grouped_by_year(): void
     {
         $query = http_build_query(collect([
-            'entity' => 'pageviews',
+            'entity' => 'pageview',
             'entity_id' => 'CDBUGS',
             'aggregates' => 'visits',
             'date_grouping' => 'year',
@@ -274,7 +274,7 @@ class SiteTest extends TestCase
     public function it_should_request_pageviews_aggregation_grouped_by_field(): void
     {
         $query = http_build_query(collect([
-            'entity' => 'pageviews',
+            'entity' => 'pageview',
             'entity_id' => 'CDBUGS',
             'aggregates' => 'visits',
             'field_grouping' => 'referrer_hostname',
@@ -298,7 +298,7 @@ class SiteTest extends TestCase
     public function it_should_request_pageviews_aggregation_ordered_by_pageviews(): void
     {
         $query = http_build_query(collect([
-            'entity' => 'pageviews',
+            'entity' => 'pageview',
             'entity_id' => 'CDBUGS',
             'aggregates' => 'pageviews',
             'sort_by' => 'pageviews'
@@ -322,7 +322,7 @@ class SiteTest extends TestCase
     public function it_should_request_pageviews_aggregation_with_other_timezone(): void
     {
         $query = http_build_query(collect([
-            'entity' => 'pageviews',
+            'entity' => 'pageview',
             'entity_id' => 'CDBUGS',
             'aggregates' => 'visits',
             'timezone' => 'Europe/Berlin',
@@ -347,7 +347,7 @@ class SiteTest extends TestCase
     {
         $timestamp = Carbon::now()->timestamp;
         $query = http_build_query(collect([
-            'entity' => 'pageviews',
+            'entity' => 'pageview',
             'entity_id' => 'CDBUGS',
             'aggregates' => 'visits',
             'date_from' => $timestamp,
@@ -372,7 +372,7 @@ class SiteTest extends TestCase
     {
         $timestamp = Carbon::now()->timestamp;
         $query = http_build_query(collect([
-            'entity' => 'pageviews',
+            'entity' => 'pageview',
             'entity_id' => 'CDBUGS',
             'aggregates' => 'visits',
             'date_to' => $timestamp,
@@ -396,7 +396,7 @@ class SiteTest extends TestCase
     public function it_should_request_pageviews_aggregation_with_limit(): void
     {
         $query = http_build_query(collect([
-            'entity' => 'pageviews',
+            'entity' => 'pageview',
             'entity_id' => 'CDBUGS',
             'aggregates' => 'visits',
             'limit' => 200,
@@ -420,7 +420,7 @@ class SiteTest extends TestCase
     public function it_should_request_pageviews_aggregation_with_filter(): void
     {
         $query = http_build_query(collect([
-            'entity' => 'pageviews',
+            'entity' => 'pageview',
             'entity_id' => 'CDBUGS',
             'aggregates' => 'visits',
             'filters' => collect([
@@ -450,7 +450,7 @@ class SiteTest extends TestCase
     public function it_should_request_pageviews_aggregation_with_multiple_filters(): void
     {
         $query = http_build_query(collect([
-            'entity' => 'pageviews',
+            'entity' => 'pageview',
             'entity_id' => 'CDBUGS',
             'aggregates' => 'visits',
             'filters' => collect([

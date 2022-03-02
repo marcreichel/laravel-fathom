@@ -88,6 +88,6 @@ class Site extends Model
         if (!isset($this->id)) {
             throw new EntityIdIsMissingException();
         }
-        return new Aggregation('pageviews', $this->id, $aggregates);
+        return new Aggregation('pageview', $this->id, $aggregates);
     }
 }
