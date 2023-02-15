@@ -9,8 +9,6 @@ parameters:
   # The level 8 is the highest level
   level: 8
   ignoreErrors:
-    - '#Call to an undefined method Illuminate\\View\\ViewFinderInterface::getPaths\(\).#'
-    - '#Parameter \#1 $view of function view expects view-string|null, string given.#'
     # - '#Attribute class JetBrains\\PhpStorm\\ArrayShape does not exist.#'
     # - '#Unsafe usage of new static#'
   excludePaths:
