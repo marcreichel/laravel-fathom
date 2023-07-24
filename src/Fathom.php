@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MarcReichel\LaravelFathom;
 
 use MarcReichel\LaravelFathom\Models\Account;
 use MarcReichel\LaravelFathom\Models\Site;
 
-class Fathom
+final class Fathom
 {
     public static function account(): Account
     {

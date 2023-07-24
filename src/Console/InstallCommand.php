@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MarcReichel\LaravelFathom\Console;
 
 use Illuminate\Console\Command;
 
-class InstallCommand extends Command
+final class InstallCommand extends Command
 {
     protected $signature = 'fathom:install';
 

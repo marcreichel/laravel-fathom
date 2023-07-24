@@ -1,24 +1,25 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MarcReichel\LaravelFathom\Models;
 
 use Illuminate\Support\Collection;
 
-class Aggregation extends Model
+final class Aggregation extends Model
 {
-    protected string $entity;
-    protected string $entityId;
-    protected array $aggregates;
-    protected array $settings;
+    private string $entity;
+    private string $entityId;
+    private array $aggregates;
 
-    protected string|null $dateGrouping;
-    protected string|null $fieldGrouping;
-    protected string|null $sortBy;
-    protected string|null $timezone;
-    protected string|null $dateFrom;
-    protected string|null $dateTo;
-    protected int|null $limit;
-    protected Collection $filters;
+    private ?string $dateGrouping;
+    private ?string $fieldGrouping;
+    private ?string $sortBy;
+    private ?string $timezone;
+    private ?string $dateFrom;
+    private ?string $dateTo;
+    private ?int $limit;
+    private Collection $filters;
 
     public function __construct(string $entity, string $entityId, array $aggregates)
     {
@@ -59,7 +60,7 @@ class Aggregation extends Model
         return $this;
     }
 
-    protected function groupByDate(string $value): void
+    private function groupByDate(string $value): void
     {
         $this->dateGrouping = $value;
     }
@@ -124,7 +125,7 @@ class Aggregation extends Model
         return $this->resolveResponse($this->client->get('aggregations?' . $query), $key);
     }
 
-    protected function buildQuery(): string
+    private function buildQuery(): string
     {
         return http_build_query(collect([
             'entity' => $this->entity,

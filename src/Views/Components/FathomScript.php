@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MarcReichel\LaravelFathom\Views\Components;
 
 use Illuminate\Contracts\View\View;
@@ -7,7 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\View\Component;
 
-class FathomScript extends Component
+final class FathomScript extends Component
 {
     public bool $doTracking = false;
 

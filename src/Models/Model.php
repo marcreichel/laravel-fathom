@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MarcReichel\LaravelFathom\Models;
 
 use Illuminate\Http\Client\PendingRequest;
@@ -21,14 +23,12 @@ abstract class Model
         ]);
     }
 
-    protected function resolveResponse(Response $response, string $cacheKey = null): array|null
+    final protected function resolveResponse(Response $response, string $cacheKey = null): array|null
     {
         if (!$cacheKey) {
             return $response->json();
         }
 
-        return Cache::remember($cacheKey, 3600, function () use ($response) {
-            return $response->json();
-        });
+        return Cache::remember($cacheKey, 3600, static fn () => $response->json());
     }
 }
