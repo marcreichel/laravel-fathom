@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MarcReichel\LaravelFathom;
 
 use Illuminate\Support\Facades\Blade;
@@ -7,12 +9,10 @@ use Illuminate\Support\ServiceProvider;
 use MarcReichel\LaravelFathom\Console\InstallCommand;
 use MarcReichel\LaravelFathom\Views\Components\FathomScript;
 
-class LaravelFathomServiceProvider extends ServiceProvider
+final class LaravelFathomServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap services.
-     *
-     * @return void
      */
     public function boot(): void
     {
@@ -33,8 +33,6 @@ class LaravelFathomServiceProvider extends ServiceProvider
 
     /**
      * Register services.
-     *
-     * @return void
      */
     public function register(): void
     {

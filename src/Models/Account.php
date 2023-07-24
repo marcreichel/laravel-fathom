@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MarcReichel\LaravelFathom\Models;
 
-class Account extends Model
+final class Account extends Model
 {
-    public function get(): array|null
+    public function get(): ?array
     {
         return $this->resolveResponse($this->client->get('account'), 'account');
     }

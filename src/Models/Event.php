@@ -1,16 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MarcReichel\LaravelFathom\Models;
 
 use MarcReichel\LaravelFathom\Exceptions\EntityIdIsMissingException;
 use MarcReichel\LaravelFathom\Traits\HasPagination;
 
-class Event extends Model
+final class Event extends Model
 {
     use HasPagination;
 
-    public string|null $siteId;
-    public string|null $id;
+    public ?string $siteId;
+    public ?string $id;
 
     public array $fillable = [
         'name',
@@ -24,7 +26,7 @@ class Event extends Model
         $this->id = $id;
     }
 
-    public function get(): array|null
+    public function get(): ?array
     {
         $siteId = $this->siteId;
 

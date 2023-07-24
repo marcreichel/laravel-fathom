@@ -1,15 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MarcReichel\LaravelFathom\Models;
 
 use MarcReichel\LaravelFathom\Exceptions\EntityIdIsMissingException;
 use MarcReichel\LaravelFathom\Traits\HasPagination;
 
-class Site extends Model
+final class Site extends Model
 {
     use HasPagination;
 
-    public string|null $id;
+    public ?string $id;
 
     public array $fillable = [
         'name',
@@ -24,13 +26,13 @@ class Site extends Model
         $this->id = $id;
     }
 
-    public function create(array $data): array|null
+    public function create(array $data): ?array
     {
         return $this->resolveResponse($this->client->asForm()->post('sites',
             collect($data)->only($this->fillable)->filter()->toArray()));
     }
 
-    public function get(): array|null
+    public function get(): ?array
     {
         if (isset($this->id)) {
             $id = $this->id;
@@ -42,26 +44,26 @@ class Site extends Model
         return $this->resolveResponse($this->client->get('sites?' . $query), $key);
     }
 
-    public function update(array $data): array|null
+    public function update(array $data): ?array
     {
         $id = $this->id;
         return $this->resolveResponse($this->client->asForm()->post("sites/$id",
             collect($data)->only($this->fillable)->filter()->toArray()));
     }
 
-    public function wipe(): array|null
+    public function wipe(): ?array
     {
         $id = $this->id;
         return $this->resolveResponse($this->client->delete("sites/$id/data"));
     }
 
-    public function delete(): array|null
+    public function delete(): ?array
     {
         $id = $this->id;
         return $this->resolveResponse($this->client->delete("sites/$id"));
     }
 
-    public function currentVisitors(bool $detailed = false): array|null
+    public function currentVisitors(bool $detailed = false): ?array
     {
         $query = http_build_query(collect([
             'site_id' => $this->id,
