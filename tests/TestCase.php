@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MarcReichel\LaravelFathom\Tests;
 
 use Illuminate\Support\Facades\Http;

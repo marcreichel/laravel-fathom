@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MarcReichel\LaravelFathom\Tests;
 
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
 
-class ConsoleTest extends TestCase
+final class ConsoleTest extends TestCase
 {
     protected string $configPath;
 
@@ -16,8 +18,7 @@ class ConsoleTest extends TestCase
         $this->configPath = config_path('fathom.php');
     }
 
-    /** @test */
-    public function the_install_command_copies_the_configuration(): void
+    public function test_the_install_command_copies_the_configuration(): void
     {
         if (File::exists($this->configPath)) {
             unlink($this->configPath);
