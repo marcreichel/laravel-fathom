@@ -3,12 +3,14 @@ name: PHPStan
 on:
   push:
     branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress --dev
       - name: Run analysis
