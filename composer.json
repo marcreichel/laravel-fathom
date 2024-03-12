@@ -39,6 +39,7 @@
             ]
         }
     },
+    "minimum-stability": "dev",
     "require-dev": {
         "gajus/dindent": "^2.0",
         "phpunit/phpunit": "^9.5|^10.0",
