@@ -19,7 +19,7 @@ final class Site extends Model
         'share_password',
     ];
 
-    public function __construct(string $id = null)
+    public function __construct(?string $id = null)
     {
         parent::__construct();
 

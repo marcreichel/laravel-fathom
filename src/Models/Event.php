@@ -14,11 +14,14 @@ final class Event extends Model
     public ?string $siteId;
     public ?string $id;
 
+    /**
+     * @var string[]
+     */
     public array $fillable = [
         'name',
     ];
 
-    public function __construct(string|null $siteId, string $id = null)
+    public function __construct(string|null $siteId, ?string $id = null)
     {
         parent::__construct();
 
