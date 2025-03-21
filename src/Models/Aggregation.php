@@ -12,13 +12,13 @@ final class Aggregation extends Model
     private string $entityId;
     private array $aggregates;
 
-    private ?string $dateGrouping;
-    private ?string $fieldGrouping;
-    private ?string $sortBy;
-    private ?string $timezone;
-    private ?string $dateFrom;
-    private ?string $dateTo;
-    private ?int $limit;
+    private string $dateGrouping;
+    private string $fieldGrouping;
+    private string $sortBy;
+    private string $timezone;
+    private string $dateFrom;
+    private string $dateTo;
+    private int $limit;
     private Collection $filters;
 
     public function __construct(string $entity, string $entityId, array $aggregates)

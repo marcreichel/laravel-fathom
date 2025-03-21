@@ -14,7 +14,7 @@
 This is an unofficial Laravel wrapper for the [Fathom Analytics](https://usefathom.com/ref/SILMHC) API and provides a
 neat little Blade component for the Fathom script tag including some helpful configurations.
 
-[![Fathom Analytics](docs/art/fathom-banner.png)](https://usefathom.com/ref/SILMHC)
+[![Fathom Analytics](docs/art/fathom-banner.png)](https://usefathom.com/)
 
 ## Installation
 
