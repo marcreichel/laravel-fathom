@@ -2,6 +2,7 @@
 
 namespace MarcReichel\LaravelFathom\Tests;
 
+use PHPUnit\Framework\Attributes\Test;
 use Carbon\Carbon;
 use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\Http;
@@ -12,7 +13,7 @@ use MarcReichel\LaravelFathom\Fathom;
 
 class SiteTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function it_should_request_all_sites(): void
     {
         Fathom::sites()->get();
@@ -22,7 +23,7 @@ class SiteTest extends TestCase
         });
     }
 
-    /** @test */
+    #[Test]
     public function it_should_request_sites_with_limit(): void
     {
         Fathom::sites()->limit(20)->get();
@@ -32,7 +33,7 @@ class SiteTest extends TestCase
         });
     }
 
-    /** @test */
+    #[Test]
     public function it_should_request_sites_after_a_specific_cursor(): void
     {
         Fathom::sites()->after('CDBUGS')->get();
@@ -42,7 +43,7 @@ class SiteTest extends TestCase
         });
     }
 
-    /** @test */
+    #[Test]
     public function it_should_request_sites_before_a_specific_cursor(): void
     {
         Fathom::sites()->before('CDBUGS')->get();
@@ -52,7 +53,7 @@ class SiteTest extends TestCase
         });
     }
 
-    /** @test */
+    #[Test]
     public function it_should_request_a_specific_site(): void
     {
         Fathom::site('CDBUGS')->get();
@@ -68,7 +69,7 @@ class SiteTest extends TestCase
         });
     }
 
-    /** @test */
+    #[Test]
     public function it_should_request_to_create_a_new_site(): void
     {
         Fathom::sites()->create(['name' => 'Laravel Fathom Test']);
@@ -90,7 +91,7 @@ class SiteTest extends TestCase
         });
     }
 
-    /** @test */
+    #[Test]
     public function it_should_request_site_update(): void
     {
         Fathom::site('CDBUGS')->update([
@@ -116,7 +117,7 @@ class SiteTest extends TestCase
         });
     }
 
-    /** @test */
+    #[Test]
     public function it_should_request_site_wipe(): void
     {
         Fathom::site('CDBUGS')->wipe();
@@ -127,7 +128,7 @@ class SiteTest extends TestCase
         });
     }
 
-    /** @test */
+    #[Test]
     public function it_should_request_to_delete_a_site(): void
     {
         Fathom::site('CDBUGS')->delete();
@@ -138,7 +139,7 @@ class SiteTest extends TestCase
         });
     }
 
-    /** @test */
+    #[Test]
     public function it_should_request_current_visitors_of_a_site(): void
     {
         Fathom::site('CDBUGS')->currentVisitors();
@@ -479,7 +480,7 @@ class SiteTest extends TestCase
         });
     }
 
-    /** @test */
+    #[Test]
     public function it_should_throw_exception_when_id_is_missing(): void
     {
         $this->expectException(EntityIdIsMissingException::class);

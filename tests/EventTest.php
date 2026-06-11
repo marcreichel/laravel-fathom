@@ -2,6 +2,7 @@
 
 namespace MarcReichel\LaravelFathom\Tests;
 
+use PHPUnit\Framework\Attributes\Test;
 use Carbon\Carbon;
 use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\Http;
@@ -11,7 +12,7 @@ use MarcReichel\LaravelFathom\Fathom;
 
 class EventTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function it_should_request_all_events(): void
     {
         Fathom::site('CDBUGS')->events()->get();
@@ -22,7 +23,7 @@ class EventTest extends TestCase
         });
     }
 
-    /** @test */
+    #[Test]
     public function it_should_request_events_with_limit(): void
     {
         Fathom::site('CDBUGS')->events()->limit(20)->get();
@@ -33,7 +34,7 @@ class EventTest extends TestCase
         });
     }
 
-    /** @test */
+    #[Test]
     public function it_should_request_events_after_a_specific_cursor(): void
     {
         Fathom::site('CDBUGS')->events()->after('registered-for-early-access')->get();
@@ -44,7 +45,7 @@ class EventTest extends TestCase
         });
     }
 
-    /** @test */
+    #[Test]
     public function it_should_request_events_before_a_specific_cursor(): void
     {
         Fathom::site('CDBUGS')->events()->before('registered-for-early-access')->get();
@@ -55,7 +56,7 @@ class EventTest extends TestCase
         });
     }
 
-    /** @test */
+    #[Test]
     public function it_should_request_to_create_a_new_event(): void
     {
         Fathom::site('CDBUGS')->events()->create(['name' => 'Registered for early access']);
@@ -67,7 +68,7 @@ class EventTest extends TestCase
         });
     }
 
-    /** @test */
+    #[Test]
     public function it_should_request_a_specific_event(): void
     {
         Fathom::site('CDBUGS')->event('signed-up-for-newsletter')->get();
@@ -78,7 +79,7 @@ class EventTest extends TestCase
         });
     }
 
-    /** @test */
+    #[Test]
     public function it_should_request_to_update_an_event(): void
     {
         Fathom::site('CDBUGS')->event('signed-up-for-newsletter')->update([
@@ -92,7 +93,7 @@ class EventTest extends TestCase
         });
     }
 
-    /** @test */
+    #[Test]
     public function it_should_request_to_wipe_an_event(): void
     {
         Fathom::site('CDBUGS')->event('signed-up-for-newsletter')->wipe();
@@ -103,7 +104,7 @@ class EventTest extends TestCase
         });
     }
 
-    /** @test */
+    #[Test]
     public function it_should_request_to_delete_an_event(): void
     {
         Fathom::site('CDBUGS')->event('signed-up-for-newsletter')->delete();
@@ -457,7 +458,7 @@ class EventTest extends TestCase
         });
     }
 
-    /** @test */
+    #[Test]
     public function it_should_throw_exception_when_id_is_missing(): void
     {
         $this->expectException(EntityIdIsMissingException::class);
