@@ -2,6 +2,7 @@
 
 namespace MarcReichel\LaravelFathom\Tests;
 
+use PHPUnit\Framework\Attributes\Test;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
 
@@ -16,7 +17,7 @@ class ConsoleTest extends TestCase
         $this->configPath = config_path('fathom.php');
     }
 
-    /** @test */
+    #[Test]
     public function the_install_command_copies_the_configuration(): void
     {
         if (File::exists($this->configPath)) {
