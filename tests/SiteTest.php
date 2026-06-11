@@ -151,9 +151,9 @@ class SiteTest extends TestCase
     }
 
     /**
-     * @test
      * @throws EntityIdIsMissingException
      */
+    #[Test]
     public function it_should_request_pageviews_aggregation(): void
     {
         $query = http_build_query(collect([
@@ -173,9 +173,9 @@ class SiteTest extends TestCase
     }
 
     /**
-     * @test
      * @throws EntityIdIsMissingException
      */
+    #[Test]
     public function it_should_request_pageviews_aggregation_grouped_by_hour(): void
     {
         $query = http_build_query(collect([
@@ -197,9 +197,9 @@ class SiteTest extends TestCase
     }
 
     /**
-     * @test
      * @throws EntityIdIsMissingException
      */
+    #[Test]
     public function it_should_request_pageviews_aggregation_grouped_by_day(): void
     {
         $query = http_build_query(collect([
@@ -221,9 +221,9 @@ class SiteTest extends TestCase
     }
 
     /**
-     * @test
      * @throws EntityIdIsMissingException
      */
+    #[Test]
     public function it_should_request_pageviews_aggregation_grouped_by_month(): void
     {
         $query = http_build_query(collect([
@@ -245,9 +245,9 @@ class SiteTest extends TestCase
     }
 
     /**
-     * @test
      * @throws EntityIdIsMissingException
      */
+    #[Test]
     public function it_should_request_pageviews_aggregation_grouped_by_year(): void
     {
         $query = http_build_query(collect([
@@ -269,9 +269,9 @@ class SiteTest extends TestCase
     }
 
     /**
-     * @test
      * @throws EntityIdIsMissingException
      */
+    #[Test]
     public function it_should_request_pageviews_aggregation_grouped_by_field(): void
     {
         $query = http_build_query(collect([
@@ -293,9 +293,9 @@ class SiteTest extends TestCase
     }
 
     /**
-     * @test
      * @throws EntityIdIsMissingException
      */
+    #[Test]
     public function it_should_request_pageviews_aggregation_ordered_by_pageviews(): void
     {
         $query = http_build_query(collect([
@@ -317,9 +317,9 @@ class SiteTest extends TestCase
     }
 
     /**
-     * @test
      * @throws EntityIdIsMissingException
      */
+    #[Test]
     public function it_should_request_pageviews_aggregation_with_other_timezone(): void
     {
         $query = http_build_query(collect([
@@ -341,9 +341,9 @@ class SiteTest extends TestCase
     }
 
     /**
-     * @test
      * @throws EntityIdIsMissingException
      */
+    #[Test]
     public function it_should_request_pageviews_aggregation_from_date(): void
     {
         $timestamp = Carbon::now()->timestamp;
@@ -366,9 +366,9 @@ class SiteTest extends TestCase
     }
 
     /**
-     * @test
      * @throws EntityIdIsMissingException
      */
+    #[Test]
     public function it_should_request_pageviews_aggregation_to_date(): void
     {
         $timestamp = Carbon::now()->timestamp;
@@ -391,9 +391,9 @@ class SiteTest extends TestCase
     }
 
     /**
-     * @test
      * @throws EntityIdIsMissingException
      */
+    #[Test]
     public function it_should_request_pageviews_aggregation_with_limit(): void
     {
         $query = http_build_query(collect([
@@ -415,9 +415,9 @@ class SiteTest extends TestCase
     }
 
     /**
-     * @test
      * @throws EntityIdIsMissingException
      */
+    #[Test]
     public function it_should_request_pageviews_aggregation_with_filter(): void
     {
         $query = http_build_query(collect([
@@ -445,9 +445,9 @@ class SiteTest extends TestCase
     }
 
     /**
-     * @test
      * @throws EntityIdIsMissingException
      */
+    #[Test]
     public function it_should_request_pageviews_aggregation_with_multiple_filters(): void
     {
         $query = http_build_query(collect([
